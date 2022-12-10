@@ -1,0 +1,164 @@
+.user-button {
+    bottom: 20px;
+    width: 250px;
+    display: flex;
+    border-radius: 50px;
+    height: 65px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.tag-center-button {
+    text-align: center;
+    margin: 0 auto;
+    padding: 12px 0;
+}
+
+.tags-button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.comment-button {
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 120px;
+    font-size: 18px;
+    border: none;
+    margin: 0;
+    padding: 7px 0;
+}
+
+.comment-reply-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.follow-button {
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 150px;
+    font-size: 18px;
+    border: none;
+    margin: 0;
+}
+
+.hobby-buttons button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    font-weight: bold;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+.select-button {
+    cursor: pointer;
+}
+
+.center-button {
+    text-align: center;
+    margin: 0 auto;
+    padding: 5px 0;
+}
+
+/* Change continue to back */
+.continue-button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    float: right;
+    margin: 0 5px;
+}
+
+.save-button {
+    width: 80px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    float: right;
+    margin: 0 auto;
+}
+
+.submit-button {
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.select-button p {
+    margin: 0;
+    text-align: center;
+}
+
+.select-button div {
+    background-color: #E9E9E9;
+    border-radius: 15px;
+    padding: 8px 0; 
+    margin: 0 50px;
+}
+
+.select-button {
+    padding: 20px 0;
+}
+
+.user-button:hover {
+    background-color: #D4D4D4;
+}
+
+.user-button p {
+    font-family: 'Halant', serif;
+    font-size: 22px; 
+    flex-grow: 2;
+    margin: 10px 0 10px 20px;
+}
+
+.user-button img {
+    width: 50px;
+    height: 50px;
+}
+
+.post-button p {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+}
+
+.post-button {
+    padding: 8px 3px;
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 200px;
+    border: none;
+}
+
+button {
+    margin-top: 15px;
+    text-align: center;
+}
