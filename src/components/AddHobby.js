@@ -65,7 +65,7 @@ function AddHobby(props) {
             props.setMessage("Cannot add existing saved hobby");
             props.setAlert("flex");
         } else {
-            const res = await fetch("http://localhost:4000/api/hobby", {
+            const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobby", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

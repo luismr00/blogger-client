@@ -23,7 +23,7 @@ function Blog() {
 
 
     const fetchpost = async () => {
-      const res = await fetch("http://localhost:4000/api/blogs", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogs", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -39,7 +39,7 @@ function Blog() {
     }
 
     const fetchHobbies = async () => {
-      const res = await fetch("http://localhost:4000/api/getHobbies", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -61,7 +61,7 @@ function Blog() {
     }, []);
 
   const logout = async () => {
-    const res = await fetch("http://localhost:4000/logout", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -80,7 +80,7 @@ function Blog() {
 
   useEffect(() => {
     const fetchcookie = async () => {
-      const res = await fetch("http://localhost:4000/", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',

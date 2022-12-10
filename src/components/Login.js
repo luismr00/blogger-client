@@ -19,7 +19,7 @@ function Login() {
     console.log("checking email and password entered");
     console.log(email, password);
 
-    const res = await fetch("http://localhost:4000/api/login", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/login", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -58,7 +58,7 @@ function Login() {
 
   const fetchcookie = async () => {
     try{
-      const res = await fetch("http://localhost:4000/", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',

@@ -26,7 +26,7 @@ const Blog = (props) => {
     // const onChange = (event) => setValue(event.target.value);
 
     const logout = async () => {
-        const res = await fetch("http://localhost:4000/logout", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
           headers: {
             'Accept': 'application/json',
@@ -61,7 +61,7 @@ const Blog = (props) => {
             props.setMessage("Comment is missing");
             props.setAlert("flex");
         } else {
-            const res = await fetch(`http://localhost:4000/api/${pathname.split("/")[2]}/comment`, {
+            const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/comment`, {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -107,7 +107,7 @@ const Blog = (props) => {
     }
 
     const callComments = async () => {
-        const res = await fetch(`http://localhost:4000/api/${pathname.split("/")[2]}/comments`, {
+        const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/comments`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

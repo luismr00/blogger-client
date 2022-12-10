@@ -39,7 +39,7 @@ function Hobbies() {
     let hobbySelections = new Set();
 
     const fetchpost = async () => {
-      const res = await fetch("http://localhost:4000/api/blogs", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogs", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -56,7 +56,7 @@ function Hobbies() {
 
     //Fetch all user hobbies list
     const fetchUsersHobbyList = async () => {
-      const res = await fetch("http://localhost:4000/api/users_hobbies_list", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/users_hobbies_list", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -72,7 +72,7 @@ function Hobbies() {
     }
 
     const fetchHobbyList = async () => {
-      const res = await fetch("http://localhost:4000/api/hobbies_list", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbies_list", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -86,7 +86,7 @@ function Hobbies() {
     }
 
     const fetchHobbies = async () => {
-      const res = await fetch("http://localhost:4000/api/getHobbies", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -117,7 +117,7 @@ function Hobbies() {
     }, [view]);
 
   const logout = async () => {
-    const res = await fetch("http://localhost:4000/logout", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -136,7 +136,7 @@ function Hobbies() {
 
   useEffect(() => {
     const fetchcookie = async () => {
-      const res = await fetch("http://localhost:4000/", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',

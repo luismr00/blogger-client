@@ -12,7 +12,7 @@ const Blogs = (props) => {
     let tags = 0;
 
     // const fetchpost = async () => {
-    //     const res = await fetch("http://localhost:4000/api/blogs", {
+    //     const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogs", {
     //         method: "GET",
     //         headers: {
     //             'Accept': 'application/json',
@@ -32,7 +32,7 @@ const Blogs = (props) => {
     
     useEffect(() => {
         const fetchcookie = async () => {
-            const res = await fetch("http://localhost:4000/", {
+            const res = await fetch("https://mysql-blogger.herokuapp.com/", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -59,7 +59,7 @@ const Blogs = (props) => {
 
         //follower MUST NOT follow itself
         if (follower != followedUser) {
-            const res = await fetch("http://localhost:4000/api/follow", {
+            const res = await fetch("https://mysql-blogger.herokuapp.com/api/follow", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

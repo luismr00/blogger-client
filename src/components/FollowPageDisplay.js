@@ -25,7 +25,7 @@ function ProfileDisplay(props) {
     // console.log(location.props.view);
 
     const logout = async () => {
-        const res = await fetch("http://localhost:4000/logout", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
           headers: {
             'Accept': 'application/json',
@@ -45,7 +45,7 @@ function ProfileDisplay(props) {
 
     const getFollowings = async (username) => {
         // e.preventDefault();
-        const res = await fetch(`http://localhost:4000/api/${pathname.split("/")[1]}/followings`, {
+        const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/followings`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -73,7 +73,7 @@ function ProfileDisplay(props) {
 
     const getFollowers = async (username) => {
         // e.preventDefault();
-        const res = await fetch(`http://localhost:4000/api/${pathname.split("/")[1]}/followers`, {
+        const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/followers`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
@@ -101,7 +101,7 @@ function ProfileDisplay(props) {
 
     const getUser = async (e) => {
         // e.preventDefault();
-        const res = await fetch(`http://localhost:4000/api/profile/${pathname.split("/")[1]}`, {
+        const res = await fetch(`https://mysql-blogger.herokuapp.com/api/profile/${pathname.split("/")[1]}`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

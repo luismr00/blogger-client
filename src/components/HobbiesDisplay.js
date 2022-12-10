@@ -23,7 +23,7 @@ function HobbiesDisplay(props) {
     // const [tempHobbies, setTempHobbies] = useState(new Set());
 
     const logout = async () => {
-        const res = await fetch("http://localhost:4000/logout", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
           headers: {
             'Accept': 'application/json',
@@ -121,7 +121,7 @@ function HobbiesDisplay(props) {
     }
 
     // const fetchHobbyList = async () => {
-    //     const res = await fetch("http://localhost:4000/api/hobbies_list", {
+    //     const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbies_list", {
     //         method: "GET",
     //         headers: {
     //             'Accept': 'application/json',
@@ -135,7 +135,7 @@ function HobbiesDisplay(props) {
     // }
 
     // const fetchHobbies = async () => {
-    //     const res = await fetch("http://localhost:4000/api/getHobbies", {
+    //     const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
     //         method: "GET",
     //         headers: {
     //             'Accept': 'application/json',
@@ -163,7 +163,7 @@ function HobbiesDisplay(props) {
     //   }, []);
 
     const addHobbies = async (addList, hobbies) => {
-        const res = await fetch("http://localhost:4000/api/addHobbies", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/api/addHobbies", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -192,7 +192,7 @@ function HobbiesDisplay(props) {
     }
 
     const deleteHobbies = async (deleteList, hobbies) => {
-        const res = await fetch("http://localhost:4000/api/deleteHobbies", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/api/deleteHobbies", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -262,7 +262,7 @@ function HobbiesDisplay(props) {
             addHobbies(addList, hobbies);
         }
 
-        // const res = await fetch("http://localhost:4000/api/hobbies", {
+        // const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbies", {
         //     method: "POST",
         //     headers: {
         //         'Accept': 'application/json',

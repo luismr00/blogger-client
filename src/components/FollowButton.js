@@ -19,7 +19,7 @@ function FollowButton(props) {
 
         //follower MUST NOT follow itself
         if (props.follower != followedUser) {
-            const res = await fetch("http://localhost:4000/api/follow", {
+            const res = await fetch("https://mysql-blogger.herokuapp.com/api/follow", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -48,7 +48,7 @@ function FollowButton(props) {
     }
 
     const unfollowUser = async () => {
-        const res = await fetch("http://localhost:4000/api/unfollow", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/api/unfollow", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -71,7 +71,7 @@ function FollowButton(props) {
     }
 
     const followStatus = async () => {
-        const res = await fetch("http://localhost:4000/api/followed", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/api/followed", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -94,7 +94,7 @@ function FollowButton(props) {
 
     const getFriends = async (username) => {
         // e.preventDefault();
-        const res = await fetch(`http://localhost:4000/api/friends`, {
+        const res = await fetch(`https://mysql-blogger.herokuapp.com/api/friends`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

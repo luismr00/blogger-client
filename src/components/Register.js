@@ -31,7 +31,7 @@ function Register() {
       setMessage("The passwords do not match. Try again!");
       setAlert("flex"); 
     } else {
-      const res = await fetch("http://localhost:4000/api/register", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/register", {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -62,7 +62,7 @@ function Register() {
 
   const fetchcookie = async () => {
     try{
-      const res = await fetch("http://localhost:4000/", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',

@@ -14,7 +14,7 @@ function Followings(props) {
 
     // const getFollowings = async (username) => {
     //     // e.preventDefault();
-    //     const res = await fetch(`http://localhost:4000/api/${username}/followings`, {
+    //     const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${username}/followings`, {
     //         method: "GET",
     //         headers: {
     //             'Accept': 'application/json',
@@ -39,7 +39,7 @@ function Followings(props) {
 
     const getFriends = async (username) => {
         // e.preventDefault();
-        const res = await fetch(`http://localhost:4000/api/friends`, {
+        const res = await fetch(`https://mysql-blogger.herokuapp.com/api/friends`, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',

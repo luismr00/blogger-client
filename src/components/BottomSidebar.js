@@ -13,7 +13,7 @@ function BottomSidebar(props) {
     const [showLogout, setShowLogout] = useState(false);
 
     const logout = async () => {
-        const res = await fetch("http://localhost:4000/logout", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
           headers: {
             'Accept': 'application/json',

@@ -34,7 +34,7 @@ function FollowPage(props) {
 
     const fetchpost = async () => {
       console.log("getting posts from the user");
-      const res = await fetch(`http://localhost:4000/api/${pathname.split("/")[2]}/blogs`, {
+      const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/blogs`, {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -50,7 +50,7 @@ function FollowPage(props) {
     }
 
     // const fetchUserFollowerData = async () => {
-    //     const res = await fetch(`http://localhost:4000/api/${pathname.split("/")[1]}/follows`, {
+    //     const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/follows`, {
     //       method: "GET",
     //       headers: {
     //           'Accept': 'application/json',
@@ -66,7 +66,7 @@ function FollowPage(props) {
     // }
 
     const fetchHobbies = async () => {
-      const res = await fetch("http://localhost:4000/api/getHobbies", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -90,7 +90,7 @@ function FollowPage(props) {
 
   useEffect(() => {
     const fetchcookie = async () => {
-      const res = await fetch("http://localhost:4000/", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',

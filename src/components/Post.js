@@ -31,7 +31,7 @@ function Post(props) {
 
   const post = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:4000/api/create", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/create", {
         method: "POST",
         headers: {
             'Accept': 'application/json',

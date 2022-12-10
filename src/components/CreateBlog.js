@@ -10,7 +10,7 @@ const CreateBlog = () => {
     const [tags, setTags] = useState("");
     const post = async (e) => {
         e.preventDefault();
-        const res = await fetch("http://localhost:4000/api/create", {
+        const res = await fetch("https://mysql-blogger.herokuapp.com/api/create", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -38,7 +38,7 @@ const CreateBlog = () => {
     }
     useEffect(() => {
         const fetchcookie = async () => {
-            const res = await fetch("http://localhost:4000/", {
+            const res = await fetch("https://mysql-blogger.herokuapp.com/", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',

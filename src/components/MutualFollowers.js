@@ -12,7 +12,7 @@ const MutualFollowers = () => {
 
     useEffect(() => {
         const fetchusers = async () => {
-            const res = await fetch("http://localhost:4000/api/users", {
+            const res = await fetch("https://mysql-blogger.herokuapp.com/api/users", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -43,7 +43,7 @@ const MutualFollowers = () => {
 
     const getMutualFollowers = async () => {
         if ((user1 && user2) != null ) {
-            const res = await fetch("http://localhost:4000/api/mutualFollowers", {
+            const res = await fetch("https://mysql-blogger.herokuapp.com/api/mutualFollowers", {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

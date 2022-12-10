@@ -34,7 +34,7 @@ function Search() {
     let hobbySelections = new Set();
 
     const fetchpost = async () => {
-      const res = await fetch("http://localhost:4000/api/blogs", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogs", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -50,7 +50,7 @@ function Search() {
     }
 
     const fetchusers = async () => {
-      const res = await fetch("http://localhost:4000/api/users", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/users", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -66,7 +66,7 @@ function Search() {
     }    
 
     const fetchMutualHobbyUsers = async () => {
-      const res = await fetch("http://localhost:4000/api/users/search/mutualHobbies", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/users/search/mutualHobbies", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -82,7 +82,7 @@ function Search() {
     }    
 
     const fetchHobbies = async () => {
-      const res = await fetch("http://localhost:4000/api/getHobbies", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
           method: "GET",
           headers: {
               'Accept': 'application/json',
@@ -106,7 +106,7 @@ function Search() {
     }, []);
 
   const logout = async () => {
-    const res = await fetch("http://localhost:4000/logout", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
       method: "GET",
       headers: {
         'Accept': 'application/json',
@@ -125,7 +125,7 @@ function Search() {
 
   useEffect(() => {
     const fetchcookie = async () => {
-      const res = await fetch("http://localhost:4000/", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',

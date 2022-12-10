@@ -50,7 +50,7 @@ function UserPage() {
 
   //Change this to update automatic
   // const Initialize = async () => {
-  //   const res = await fetch("http://localhost:4000/api/initialize", {
+  //   const res = await fetch("https://mysql-blogger.herokuapp.com/api/initialize", {
   //     method: "POST",
   //     headers: {
   //       'Accept': 'application/json',
@@ -66,7 +66,7 @@ function UserPage() {
   // }
 
   const fetchpost = async () => {
-    const res = await fetch("http://localhost:4000/api/blogs", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogs", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -84,7 +84,7 @@ function UserPage() {
   }
 
   const fetchHobbies = async () => {
-    const res = await fetch("http://localhost:4000/api/getHobbies", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -101,7 +101,7 @@ function UserPage() {
   }
 
   const fetchpostNC = async () => {
-    const res = await fetch("http://localhost:4000/api/blogsNC", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsNC", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -116,7 +116,7 @@ function UserPage() {
   }
 
   const fetchpostMPR = async () => {
-    const res = await fetch("http://localhost:4000/api/blogsMPR", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsMPR", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -131,7 +131,7 @@ function UserPage() {
   }
 
   const fetchpostMNR = async () => {
-    const res = await fetch("http://localhost:4000/api/blogsMNR", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsMNR", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -146,7 +146,7 @@ function UserPage() {
   }
 
   const fetchpostOPR = async () => {
-    const res = await fetch("http://localhost:4000/api/blogsOPR", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsOPR", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -161,7 +161,7 @@ function UserPage() {
   }
 
   const fetchpostHobbies = async () => {
-    const res = await fetch("http://localhost:4000/api/hobbyBlogs", {
+    const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbyBlogs", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -187,7 +187,7 @@ function UserPage() {
 
   useEffect(() => {
     const fetchcookie = async () => {
-      const res = await fetch("http://localhost:4000/", {
+      const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
         headers: {
           'Accept': 'application/json',
