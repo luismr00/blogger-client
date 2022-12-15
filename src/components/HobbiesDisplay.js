@@ -25,6 +25,7 @@ function HobbiesDisplay(props) {
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
+          credentials: 'include',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -165,10 +166,10 @@ function HobbiesDisplay(props) {
     const addHobbies = async (addList, hobbies) => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/addHobbies", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'credentials': 'include'
             },
             body: JSON.stringify({
                 list: addList
@@ -194,10 +195,10 @@ function HobbiesDisplay(props) {
     const deleteHobbies = async (deleteList, hobbies) => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/deleteHobbies", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'credentials': 'include'
             },
             body: JSON.stringify({
                 list: deleteList

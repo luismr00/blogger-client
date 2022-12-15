@@ -15,6 +15,7 @@ function BottomSidebar(props) {
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
+          credentials: 'include',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

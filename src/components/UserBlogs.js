@@ -13,6 +13,7 @@ const UserBlogs = () => {
         const fetchusers = async () => {
             const res = await fetch("https://mysql-blogger.herokuapp.com/api/users", {
                 method: "GET",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -42,6 +43,7 @@ const UserBlogs = () => {
     const getUserBlogs = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/user-blogs-positive", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

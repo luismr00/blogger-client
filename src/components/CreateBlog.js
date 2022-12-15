@@ -12,10 +12,10 @@ const CreateBlog = () => {
         e.preventDefault();
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/create", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'credentials': 'include'
             },
             body: JSON.stringify({
                     description: description,
@@ -40,6 +40,7 @@ const CreateBlog = () => {
         const fetchcookie = async () => {
             const res = await fetch("https://mysql-blogger.herokuapp.com/", {
                 method: "GET",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

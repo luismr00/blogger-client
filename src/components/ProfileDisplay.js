@@ -22,6 +22,7 @@ function ProfileDisplay(props) {
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
+          credentials: 'include',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -42,6 +43,7 @@ function ProfileDisplay(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/followings`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -67,6 +69,7 @@ function ProfileDisplay(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/followers`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -92,6 +95,7 @@ function ProfileDisplay(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/profile/${pathname.split("/")[2]}`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -99,10 +103,10 @@ function ProfileDisplay(props) {
         })
         const data = await res.json();
         if(data.success) {
-            // console.log("Getting information from getUser...");
-            // console.log(data.profileInfo);
-            // console.log(data.hobbies);
-            // console.log(data.blogs_count[0].blogs_count);
+            console.log("Getting information from getUser...");
+            console.log(data.profileInfo);
+            console.log(data.hobbies);
+            console.log(data.blogs_count[0].blogs_count);
             setUserProfile(data.profileInfo[0]);
             setUserHobbies(data.hobbies);
             setBlogCount(data.blogs_count[0].blogs_count);

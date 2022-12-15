@@ -21,6 +21,7 @@ function FollowButton(props) {
         if (props.follower != followedUser) {
             const res = await fetch("https://mysql-blogger.herokuapp.com/api/follow", {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -50,6 +51,7 @@ function FollowButton(props) {
     const unfollowUser = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/unfollow", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -73,6 +75,7 @@ function FollowButton(props) {
     const followStatus = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/followed", {
             method: "POST",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -96,6 +99,7 @@ function FollowButton(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/friends`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

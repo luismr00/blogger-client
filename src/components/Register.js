@@ -33,6 +33,7 @@ function Register() {
     } else {
       const res = await fetch("https://mysql-blogger.herokuapp.com/api/register", {
         method: "POST",
+        credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -64,6 +65,7 @@ function Register() {
     try{
       const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
+        credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

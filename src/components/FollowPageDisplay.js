@@ -27,6 +27,7 @@ function ProfileDisplay(props) {
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
+          credentials: 'include',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -47,6 +48,7 @@ function ProfileDisplay(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/followings`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -75,6 +77,7 @@ function ProfileDisplay(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/followers`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -103,6 +106,7 @@ function ProfileDisplay(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/profile/${pathname.split("/")[1]}`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

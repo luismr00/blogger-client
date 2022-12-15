@@ -67,10 +67,10 @@ function AddHobby(props) {
         } else {
             const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobby", {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'credentials': 'include'
                 },
                 body: JSON.stringify({
                     hobby: hobby, 

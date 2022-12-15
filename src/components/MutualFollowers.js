@@ -14,6 +14,7 @@ const MutualFollowers = () => {
         const fetchusers = async () => {
             const res = await fetch("https://mysql-blogger.herokuapp.com/api/users", {
                 method: "GET",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -45,6 +46,7 @@ const MutualFollowers = () => {
         if ((user1 && user2) != null ) {
             const res = await fetch("https://mysql-blogger.herokuapp.com/api/mutualFollowers", {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

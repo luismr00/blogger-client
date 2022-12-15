@@ -34,6 +34,7 @@ const Blogs = (props) => {
         const fetchcookie = async () => {
             const res = await fetch("https://mysql-blogger.herokuapp.com/", {
                 method: "GET",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -61,6 +62,7 @@ const Blogs = (props) => {
         if (follower != followedUser) {
             const res = await fetch("https://mysql-blogger.herokuapp.com/api/follow", {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

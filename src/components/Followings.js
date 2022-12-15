@@ -41,6 +41,7 @@ function Followings(props) {
         // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/friends`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

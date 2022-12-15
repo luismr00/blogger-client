@@ -36,6 +36,7 @@ function FollowPage(props) {
       console.log("getting posts from the user");
       const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/blogs`, {
           method: "GET",
+          credentials: 'include',
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
@@ -68,6 +69,7 @@ function FollowPage(props) {
     const fetchHobbies = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
           method: "GET",
+          credentials: 'include',
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
@@ -92,6 +94,7 @@ function FollowPage(props) {
     const fetchcookie = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
+        credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

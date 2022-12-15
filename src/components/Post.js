@@ -33,10 +33,10 @@ function Post(props) {
     e.preventDefault();
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/create", {
         method: "POST",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'credentials': 'include'
       },
       body: JSON.stringify({
               description: description,

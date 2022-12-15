@@ -68,6 +68,7 @@ function UserPage() {
   const fetchpost = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogs", {
         method: "GET",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -86,6 +87,7 @@ function UserPage() {
   const fetchHobbies = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
         method: "GET",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -103,6 +105,7 @@ function UserPage() {
   const fetchpostNC = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsNC", {
         method: "GET",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -118,6 +121,7 @@ function UserPage() {
   const fetchpostMPR = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsMPR", {
         method: "GET",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -133,6 +137,7 @@ function UserPage() {
   const fetchpostMNR = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsMNR", {
         method: "GET",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -148,6 +153,7 @@ function UserPage() {
   const fetchpostOPR = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogsOPR", {
         method: "GET",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -163,6 +169,7 @@ function UserPage() {
   const fetchpostHobbies = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbyBlogs", {
         method: "GET",
+        credentials: 'include',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -189,6 +196,7 @@ function UserPage() {
     const fetchcookie = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
+        credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',

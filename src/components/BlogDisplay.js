@@ -28,6 +28,7 @@ const Blog = (props) => {
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
           method: "GET",
+          credentials: 'include',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -63,10 +64,10 @@ const Blog = (props) => {
         } else {
             const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/comment`, {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'credentials': 'include'
                 },
                 body: JSON.stringify({
                     comment: comment,
@@ -109,10 +110,10 @@ const Blog = (props) => {
     const callComments = async () => {
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/comments`, {
             method: "GET",
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'credentials': 'include'
             },
         })
             const data = await res.json();

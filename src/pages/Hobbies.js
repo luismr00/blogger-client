@@ -41,6 +41,7 @@ function Hobbies() {
     const fetchpost = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/api/blogs", {
           method: "GET",
+          credentials: 'include',
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
@@ -58,6 +59,7 @@ function Hobbies() {
     const fetchUsersHobbyList = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/api/users_hobbies_list", {
           method: "GET",
+          credentials: 'include',
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
@@ -74,6 +76,7 @@ function Hobbies() {
     const fetchHobbyList = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbies_list", {
           method: "GET",
+          credentials: 'include',
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
@@ -88,6 +91,7 @@ function Hobbies() {
     const fetchHobbies = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
           method: "GET",
+          credentials: 'include',
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
@@ -119,6 +123,7 @@ function Hobbies() {
   const logout = async () => {
     const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
       method: "GET",
+      credentials: 'include',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -138,6 +143,7 @@ function Hobbies() {
     const fetchcookie = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/", {
         method: "GET",
+        credentials: 'include',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
