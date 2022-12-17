@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import DotLoader from "react-spinners/DotLoader";
 import { useLocation } from 'react-router-dom';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Followings from "../components/Followings";
-import HobbiesDisplay from "../components/HobbiesDisplay";
 import ProfileDisplay from "../components/ProfileDisplay";
 import Post from "../components/Post";
 import SelectTags from "../components/SelectTags";
@@ -30,7 +29,6 @@ function Profile() {
     let hobbySelections = new Set();
 
     const fetchpost = async () => {
-      console.log("getting posts from the user");
       const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/blogs`, {
           method: "GET",
           credentials: 'include',
@@ -41,8 +39,6 @@ function Profile() {
       })
       const data = await res.json();
       if(data.blogs != null){
-          console.log("fetching all posts from profile component")
-          console.log(data.blogs);
           setBlogList(data.blogs);
           setBlogLimit(data.blogs.slice(0,10));
       }
@@ -59,9 +55,6 @@ function Profile() {
       })
       const data = await res.json();
       if(data.hobbies != null){
-  
-          console.log("Showing hobbies fetched");
-          console.log(data.hobbies);
           setUserHobbies(data.hobbies);
       }
     }
@@ -106,7 +99,6 @@ function Profile() {
         setUser(data.user);
         setAuthenticated(true);
         setFollower(data.user.username);
-        console.log(data.user)
       } else {
         console.log("user is not logged in");
         setAuthenticated(false);
@@ -128,14 +120,11 @@ function Profile() {
   }
 
   const closePostWindow = () => {
-    // console.log("hobbySelections values before closing and after");
-    // console.log(hobbySelections);
     hobbySelections = new Set();
     setPostWindow("hidden");
     setSwitchDisplay(null);
     setAlert("none");
     setMessage("");
-    // console.log(hobbySelections);
   }
 
   const loadingTimer = () => {
@@ -160,10 +149,8 @@ function Profile() {
 
         <div>
           {postDisplay()}
-          {/* <Post postWindow = {postWindow} showPostWindow={setPostWindow} fetchpost={fetchpost}/> */}
           <div className="three-way-grid" style={clickEvents}>
             <Sidebar user={user} setAuthenticated={setAuthenticated} setUser={setUser} openPostWindow={openPostWindow} />
-            {/* <HobbiesDisplay user={user}/> */}
             <ProfileDisplay user={user} BlogList={BlogList} BlogLimit={BlogLimit} setBlogLimit={setBlogLimit} follower={follower} setAuthenticated={setAuthenticated} setUser={setUser}/>
             <Followings user={user} />
           </div>

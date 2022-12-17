@@ -7,7 +7,6 @@ import SearchDisplay from "../components/SearchDisplay";
 import SearchSelection from "../components/SearchSelection";
 import LookUp from "../components/LookUp";
 import Post from "../components/Post";
-// import MutualFollowingSearch from "../components/MutualFollowingSearch";
 import SelectTags from "../components/SelectTags";
 import BottomSidebar from "../components/BottomSidebar";
 
@@ -17,7 +16,6 @@ function Search() {
     const [allUsers, setAllUsers] = useState(null);
     const [mutualHobbyUsers, setMutualHobbyUsers] = useState(null);
     const [loading, setLoading] = useState("Loading");
-    // const [view, setView] = useState(null);
     const [userInfoAll, setUserInfoAll] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
     const [authenticated, setAuthenticated] = useState(false);
@@ -44,8 +42,6 @@ function Search() {
       })
       const data = await res.json();
       if(data.blogs != null){
-          console.log("fetching post from mainpage component")
-          console.log(data.blogs);
           setBlogList(data.blogs);
       }
     }
@@ -61,8 +57,6 @@ function Search() {
       })
       const data = await res.json();
       if(data.users != null){
-          console.log("fetching all users");
-          console.log(data.users);
           setAllUsers(data.users);
       }
     }    
@@ -78,8 +72,6 @@ function Search() {
       })
       const data = await res.json();
       if(data.users != null){
-          console.log("fetching all users with mutual hobbies");
-          console.log(data.users);
           setMutualHobbyUsers(data.users);
       }
     }    
@@ -95,9 +87,6 @@ function Search() {
       })
       const data = await res.json();
       if(data.hobbies != null){
-  
-          console.log("Showing hobbies fetched");
-          console.log(data.hobbies);
           setUserHobbies(data.hobbies);
       }
     }
@@ -143,7 +132,6 @@ function Search() {
       if(data.user != null){
         setUser(data.user);
         setAuthenticated(true);
-        console.log(data.user)
       } else {
         console.log("user is not logged in");
         setAuthenticated(false);
@@ -168,14 +156,11 @@ function Search() {
   }
 
   const closePostWindow = () => {
-    // console.log("hobbySelections values before closing and after");
-    // console.log(hobbySelections);
     hobbySelections = new Set();
     setPostWindow("hidden");
     setSwitchDisplay(null);
     setAlert("none");
     setMessage("");
-    // console.log(hobbySelections);
   }
 
   const handleUserSelection = (view, username) => {
@@ -184,7 +169,6 @@ function Search() {
     if (view === 'single') {
 
       if(!allUsers[username]) {
-        // console.log("Cannot find the user. Try again.");
         setMessage("User not found");
         setAlert("flex");
       } else {
@@ -198,9 +182,6 @@ function Search() {
       }
 
     } else if (view === 'mutual-hobbies') {
-      // setView(view);
-      // console.log("mutual hobbies");
-      // console.log(JSON.stringify(mutualHobbyUsers));
       getUserLimit(mutualHobbyUsers, 10);
       setUserInfoAll(mutualHobbyUsers);
       closeSelection();
@@ -228,7 +209,6 @@ function Search() {
   }
 
   const clickEvents = {
-    // pointerEvents: postWindow != "hidden" || switchDisplay != "hidden" ? "none" : "auto"
     pointerEvents: postWindow === "visible" || searchSelection === "visible" ? "none" : "auto"
   }
 
@@ -247,8 +227,6 @@ function Search() {
             return <SearchSelection searchSelection={searchSelection} setSearchSelection={setSearchSelection} setSearchPage={setSearchPage} closeSelection={closeSelection} handleUserSelection={handleUserSelection} />
         case 1:
           return <LookUp allUsers={allUsers} handleUserSelection={handleUserSelection} searchSelection={searchSelection} setSearchSelection={setSearchSelection} setSearchPage={setSearchPage} closeSelection={closeSelection} />
-        // case 2: 
-        //     return <MutualFollowingSearch searchSelection={searchSelection} setSearchSelection={setSearchSelection} setSearchPage={setSearchPage} closeSelection={closeSelection} />
         }
       }
 

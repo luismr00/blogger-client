@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import DotLoader from "react-spinners/DotLoader";
 import { useLocation } from 'react-router-dom';
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Followings from "../components/Followings";
-import HobbiesDisplay from "../components/HobbiesDisplay";
-import ProfileDisplay from "../components/ProfileDisplay";
 import Post from "../components/Post";
 import SelectTags from "../components/SelectTags";
 import FollowPageDisplay from "../components/FollowPageDisplay";
@@ -29,11 +27,7 @@ function FollowPage(props) {
     const history = useHistory();
     let hobbySelections = new Set();
 
-    console.log("checking view props");
-    // console.log(location.state.view);
-
     const fetchpost = async () => {
-      console.log("getting posts from the user");
       const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/blogs`, {
           method: "GET",
           credentials: 'include',
@@ -44,27 +38,9 @@ function FollowPage(props) {
       })
       const data = await res.json();
       if(data.blogs != null){
-          console.log("fetching all posts from profile component")
-          console.log(data.blogs);
           setBlogList(data.blogs);
       }
     }
-
-    // const fetchUserFollowerData = async () => {
-    //     const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/follows`, {
-    //       method: "GET",
-    //       headers: {
-    //           'Accept': 'application/json',
-    //           'Content-Type': 'application/json',
-    //       },
-    //   })
-    //   const data = await res.json();
-    //   if(data.followData != null){
-    //       console.log("fetching all posts from profile component")
-    //       console.log(data.followData);
-    //       setBlogList(data.followData);
-    //   }
-    // }
 
     const fetchHobbies = async () => {
       const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
@@ -77,9 +53,6 @@ function FollowPage(props) {
       })
       const data = await res.json();
       if(data.hobbies != null){
-  
-          console.log("Showing hobbies fetched");
-          console.log(data.hobbies);
           setUserHobbies(data.hobbies);
       }
     }
@@ -87,7 +60,6 @@ function FollowPage(props) {
     useEffect(() => {
       fetchpost();
       fetchHobbies();
-    //   fetchUserFollowerData();
     }, []);
 
   useEffect(() => {
@@ -106,7 +78,6 @@ function FollowPage(props) {
         setUser(data.user);
         setAuthenticated(true);
         setFollower(data.user.username);
-        console.log(data.user)
       } else {
         console.log("user is not logged in");
         setAuthenticated(false);
@@ -128,14 +99,11 @@ function FollowPage(props) {
   }
 
   const closePostWindow = () => {
-    // console.log("hobbySelections values before closing and after");
-    // console.log(hobbySelections);
     hobbySelections = new Set();
     setPostWindow("hidden");
     setSwitchDisplay(null);
     setAlert("none");
     setMessage("");
-    // console.log(hobbySelections);
   }
 
   const loadingTimer = () => {
@@ -160,10 +128,8 @@ function FollowPage(props) {
 
         <div>
           {postDisplay()}
-          {/* <Post postWindow = {postWindow} showPostWindow={setPostWindow} fetchpost={fetchpost}/> */}
           <div className="three-way-grid" style={clickEvents}>
             <Sidebar user={user} setAuthenticated={setAuthenticated} setUser={setUser} openPostWindow={openPostWindow} />
-            {/* <HobbiesDisplay user={user}/> */}
             <FollowPageDisplay user={user} view={location.state ? location.state.view : null} setAuthenticated={setAuthenticated} setUser={setUser}/>
             <Followings user={user} />
           </div>

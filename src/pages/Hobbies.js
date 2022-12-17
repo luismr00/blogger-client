@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import DotLoader from "react-spinners/DotLoader";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Followings from "../components/Followings";
 import HobbiesDisplay from "../components/HobbiesDisplay";
 import Post from "../components/Post";
-// import SearchDisplay from "../components/SearchDisplay";
-// import SearchSelection from "../components/SearchSelection";
-// import LookUp from "../components/LookUp";
 import HobbySelection from "../components/HobbySelection";
 import AddHobby from "../components/AddHobby";
-import HobbyCategories from "../components/HobbyCategories";
 import SelectTags from "../components/SelectTags";
 import BottomSidebar from "../components/BottomSidebar";
-
 
 function Hobbies() {
 
@@ -49,8 +44,6 @@ function Hobbies() {
       })
       const data = await res.json();
       if(data.blogs != null){
-          console.log("fetching post from mainpage component")
-          console.log(data.blogs);
           setBlogList(data.blogs);
       }
     }
@@ -68,8 +61,6 @@ function Hobbies() {
       const data = await res.json();
       if(data.hobbies != null){
           setOtherHobbies(data.hobbies);
-          console.log("checking other hobby list from users");
-          console.log(data.hobbies);
       }
     }
 
@@ -99,11 +90,7 @@ function Hobbies() {
       })
       const data = await res.json();
       if(data.hobbies != null){
-
-          // console.log("Showing hobbies fetched");
-          // console.log(JSON.stringify(data.hobbies));
           setSelectedHobbies(new Set(data.hobbies));
-          // console.log(selectedHobbies);
           setTempHobbies(new Set(data.hobbies));
           setUserHobbies(data.hobbies);
       }
@@ -154,7 +141,6 @@ function Hobbies() {
       if(data.user != null){
         setUser(data.user);
         setAuthenticated(true);
-        console.log(data.user)
       } else {
         console.log("user is not logged in");
         setAuthenticated(false);
@@ -167,7 +153,6 @@ function Hobbies() {
   }, [authenticated]);
 
   const clickEvents = {
-    // pointerEvents: postWindow != "hidden" ? "none" : "auto"
     pointerEvents: postWindow === "visible" || hobbySelection === "visible" ? "none" : "auto"
   }
 
@@ -184,14 +169,11 @@ function Hobbies() {
   }
 
   const closePostWindow = () => {
-    // console.log("hobbySelections values before closing and after");
-    // console.log(hobbySelections);
     hobbySelections = new Set();
     setPostWindow("hidden");
     setSwitchDisplay(null);
     setAlert("none");
     setMessage("");
-    // console.log(hobbySelections);
   }
 
   const loadingTimer = () => {
@@ -201,7 +183,6 @@ function Hobbies() {
   }
 
   const postDisplay = () => {
-    // console.log(switchDisplay);
     switch(switchDisplay) {
         case 0: 
             return <SelectTags setMessage={setMessage} setAlert={setAlert} setTags={setTags} hobbySelections={hobbySelections} userHobbies={userHobbies} setSwitchDisplay={setSwitchDisplay} postWindow = {postWindow} closePostWindow={closePostWindow} tagDisplay={userHobbies.length === 0 ? false : true}/>
@@ -216,8 +197,6 @@ function Hobbies() {
             return <HobbySelection hobbySelection={hobbySelection} setHobbySelection={setHobbySelection} setSearchPage={setSearchPage} closeSelection={closeSelection} setView={setView} />
         case 1: 
             return <AddHobby user={user} view={view} setView={setView} setMessage={setMessage} setAlert={setAlert} hobbiesList={hobbiesList} otherHobbies={otherHobbies} selectedHobbies={selectedHobbies} setTempHobbies={setTempHobbies} hobbySelection={hobbySelection} setHobbySelection={setHobbySelection} setSearchPage={setSearchPage} closeSelection={closeSelection} userHobbies={userHobbies} setUserHobbies={setUserHobbies} setSelectedHobbies={setSelectedHobbies} fetchHobbies={fetchHobbies} />
-        // case 2: 
-        //     return <HobbyCategories hobbySelection={hobbySelection} setHobbySelection={setHobbySelection} setSearchPage={setSearchPage} closeSelection={closeSelection} />
       }
   }
 
@@ -228,10 +207,8 @@ function Hobbies() {
         <div>
           {postDisplay()}
           {displayPage()}
-          {/* <Post postWindow = {postWindow} showPostWindow={setPostWindow} fetchpost={fetchpost}/> */}
           <div className="three-way-grid" style={clickEvents}>
             <Sidebar user={user} setAuthenticated={setAuthenticated} setUser={setUser} openPostWindow={openPostWindow} />
-            {/* <SearchDisplay user={user} setSearchSelection={setSearchSelection}/> */}
             <HobbiesDisplay fetchHobbies={fetchHobbies} setHobbiesList={setHobbiesList} user={user} setHobbySelection={setHobbySelection} view={view} setView={setView} savePopup={savePopup} setSavePopup={setSavePopup} hobbiesList={hobbiesList} selectedHobbies={selectedHobbies} setSelectedHobbies={setSelectedHobbies} tempHobbies={tempHobbies} setTempHobbies={setTempHobbies} userHobbies={userHobbies} setUserHobbies={setUserHobbies} setAuthenticated={setAuthenticated} setUser={setUser} />
             <Followings user={user} />
           </div>

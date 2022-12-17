@@ -33,8 +33,6 @@ function Blog() {
       })
       const data = await res.json();
       if(data.blogs != null){
-          console.log("fetching post from mainpage component")
-          console.log(data.blogs);
           setBlogList(data.blogs);
       }
     }
@@ -50,9 +48,6 @@ function Blog() {
       })
       const data = await res.json();
       if(data.hobbies != null){
-  
-          console.log("Showing hobbies fetched");
-          console.log(data.hobbies);
           setUserHobbies(data.hobbies);
       }
     }
@@ -96,7 +91,6 @@ function Blog() {
       if(data.user != null){
         setUser(data.user);
         setAuthenticated(true);
-        console.log(data.user)
       } else {
         console.log("user is not logged in");
         setAuthenticated(false);
@@ -118,14 +112,11 @@ function Blog() {
   }
 
   const closePostWindow = () => {
-    // console.log("hobbySelections values before closing and after");
-    // console.log(hobbySelections);
     hobbySelections = new Set();
     setPostWindow("hidden");
     setSwitchDisplay(null);
     setAlert("none");
     setMessage("");
-    // console.log(hobbySelections);
   }
 
   const postDisplay = () => {
@@ -144,20 +135,14 @@ function Blog() {
 
         <div>
           {postDisplay()}
-          {/* <Post postWindow = {postWindow} showPostWindow={setPostWindow} fetchpost={fetchpost}/> */}
           <div className="three-way-grid" style={clickEvents}>
             <Sidebar user={user} setAuthenticated={setAuthenticated} setUser={setUser} openPostWindow={openPostWindow} />
-            {/* <ProfileDisplay user={user} /> */}
             <BlogDisplay setMessage={setMessage} setAlert={setAlert} setAuthenticated={setAuthenticated} setUser={setUser} />
             <Followings user={user} />
           </div>
         </div>
           : 
-          <div>
-            {/* <h1>Please login</h1>
-            <a href="/"><p>Sign in</p></a>
-            <a href="/register"><p>Register</p></a> */}
-          </div>
+          <div></div>
         }
         <BottomSidebar user={user} setAuthenticated={setAuthenticated} setUser={setUser} openPostWindow={openPostWindow} />
         <div class="message" style={{display: alert}}>
