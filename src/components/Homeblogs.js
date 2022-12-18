@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Blogs from "./Blogs";
 import UserIcon from "../assets/person-circle.svg"
-import NotFound from "./NotFound";
 import NotAvailable from "./NotAvailable";
 
 function Homeblogs(props) { 
@@ -47,7 +46,6 @@ function Homeblogs(props) {
                     
                     <Blogs BlogList={props.BlogList} BlogLimit={props.BlogLimit} setBlogLimit={props.setBlogLimit}/>
                     :
-                    // <NotFound />
                     <NotAvailable title={"No blogs available"} message={"Select a different selection from the button above or follow users to view more blogs"} button={"Search"} margin={"200px 100px 0"} />
 
                     

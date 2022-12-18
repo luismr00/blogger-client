@@ -8,7 +8,6 @@ import FollowButton from "./FollowButton";
 
 function ProfileDisplay(props) { 
 
-    // const [follower, setFollower] = useState(null);
     const location = useLocation();
     const history = useHistory();
     const [showLogout, setShowLogout] = useState(false);
@@ -40,7 +39,6 @@ function ProfileDisplay(props) {
     }
 
     const getFollowings = async (username) => {
-        // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/followings`, {
             method: "GET",
             credentials: 'include',
@@ -48,25 +46,16 @@ function ProfileDisplay(props) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-            // , body: JSON.stringify({
-            //     follower: username
-            // }),
         })
         const data = await res.json();
         if(data.success) {
-            // alert("Getting information over the console...");
-            console.log(data.followings);
             setFollowingUsers(data.followings.length);
-            // setUserProfile(data.profileInfo[0]);
-            // setUserHobbies(data.hobbies);
         } else {
             alert(data?.err);
-            console.log(data.err);
         }
     }
 
     const getFollowers = async (username) => {
-        // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[2]}/followers`, {
             method: "GET",
             credentials: 'include',
@@ -74,25 +63,16 @@ function ProfileDisplay(props) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-            // , body: JSON.stringify({
-            //     follower: username
-            // }),
         })
         const data = await res.json();
         if(data.success) {
-            // alert("Getting information over the console...");
-            console.log(data.followers);
             setUserFollowers(data.followers.length);
-            // setUserProfile(data.profileInfo[0]);
-            // setUserHobbies(data.hobbies);
         } else {
             alert(data?.err);
-            console.log(data.err);
         }
     }
 
     const getUser = async (e) => {
-        // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/profile/${pathname.split("/")[2]}`, {
             method: "GET",
             credentials: 'include',
@@ -103,17 +83,11 @@ function ProfileDisplay(props) {
         })
         const data = await res.json();
         if(data.success) {
-            console.log("Getting information from getUser...");
-            console.log(data.profileInfo);
-            console.log(data.hobbies);
-            console.log(data.blogs_count[0].blogs_count);
             setUserProfile(data.profileInfo[0]);
             setUserHobbies(data.hobbies);
             setBlogCount(data.blogs_count[0].blogs_count);
-            // followStatus(data.profileInfo[0].username);
         } else {
             alert(data?.err);
-            console.log(data.err);
         }
     }
 
@@ -121,7 +95,6 @@ function ProfileDisplay(props) {
         getUser();
         getFollowings();
         getFollowers();
-        // followStatus(); 
     }, [pathname.split("/")[2]]);
 
     return (
@@ -138,22 +111,12 @@ function ProfileDisplay(props) {
                     <div className="profile-header">
                         <div className="profile-header-body">
                             <div className="profile-header-image">
-                                {/* <p>image here</p> */}
                                 <img src={UserIcon}></img>
                             </div>
                             <div className="profile-header-text">
                                 <div className="profile-header-top">
                                     <h4>{userProfile.first_name} {userProfile.last_name}</h4>
-                                    {/* <p>follow button</p> */}
-                                    {/* {console.log("follower id: " + followed)} */}
-                                    {/* <button className="follow-button" style={userProfile.username === props.user.username ? {visibility: "hidden"} : {visibility: "visible"}} onClick={() => followUser(userProfile.username)}>Follow</button> */}
-                                    {/* {followed != null ?
-                                        <FollowButton user={props.user} userProfile={userProfile} class={"follow-button"} actionName={"Follow"} followUser={followUser} />
-                                        :
-                                        <FollowButton user={props.user} userProfile={userProfile} class={"unfollow-button"} actionName={"Unfollow"} followUser={followUser} />
-                                    } */}
                                     <FollowButton user={props.user} userProfile={userProfile} />
-
                                 </div>
                                 <div className="hobby-list">
                                     <p>Hobbies:</p>
@@ -180,7 +143,6 @@ function ProfileDisplay(props) {
                                     <div className="follow-count-select" onClick={() => {history.push(`/${userProfile.username}/follow-page`, {view: "followings", userProfile: userProfile, user: props.user })}}>
                                         <p>{followingUsers} Following</p>
                                     </div>
-                                    {/* <p>0 Mutual Followers</p> */}
                                 </div>
                             </div>
                         </div>

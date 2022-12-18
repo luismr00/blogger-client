@@ -8,14 +8,13 @@ function FollowButton(props) {
 
     const location = useLocation();
     const { pathname } = location;
-    const dispatch = useDispatch();
     const friends = useSelector((state) => state.friends.friends);
     const [followed, setFollowed] = useState(null);
+    const dispatch = useDispatch();
 
     const page = pathname.split("/")[2];
 
     const followUser = async (followedUser) => {
-        console.log(props.follower + ' will now follow ' + followedUser);
 
         //follower MUST NOT follow itself
         if (props.follower != followedUser) {
@@ -28,13 +27,11 @@ function FollowButton(props) {
                 },
                 body: JSON.stringify({
                     followedUser: followedUser
-                    // follower: props.follower
                 }),
             })
             const data = await res.json();
             if(data.success === true){
                 alert("Followed successfully");
-                console.log('successfully followed the user');
                 followStatus();
                 getFriends();
             }
@@ -44,7 +41,6 @@ function FollowButton(props) {
 
         } else {
             alert("You cannot follow yourself");
-            console.log('following oneself is not permitted');
         }
     }
 
@@ -63,7 +59,6 @@ function FollowButton(props) {
         const data = await res.json();
         if(data.success === true){
             alert("Unfollowed successfully");
-            console.log("Unfollowed successfully");
             setFollowed(null);
             getFriends();
         }
@@ -86,8 +81,6 @@ function FollowButton(props) {
         })
         const data = await res.json();
         if(data.success === true){
-            console.log("Fetched following id for follow button requirements");
-            console.log(data.follower_id)
             setFollowed(data.follower_id);
         }
         else{
@@ -104,16 +97,10 @@ function FollowButton(props) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-            // , body: JSON.stringify({
-            //     follower: username
-            // }),
         })
         const data = await res.json();
         if(data.success) {
-            // console.log("Updating friends list...");
-            // ONLY update if the new fetched list has a different length
             if(friends.length != data.friends.length) {
-                console.log("Updating friends list...")
                 dispatch(updateFriends(data.friends));
             } else {
                 console.log("No friends update");

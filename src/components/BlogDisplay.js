@@ -22,8 +22,6 @@ const Blog = (props) => {
 
     //For textarea adjustment text growth/shrink
     const textareaRef = useRef(null);
-    const [value, setValue] = useState("");
-    // const onChange = (event) => setValue(event.target.value);
 
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
@@ -76,8 +74,6 @@ const Blog = (props) => {
             })
             const data = await res.json();
             if(data.success) {
-                // alert('Comment posted successfully');
-                // console.log("comment successful");
                 props.setMessage("Comment posted successfully");
                 props.setAlert("flex");
                 setTimeout(() => {
@@ -89,17 +85,13 @@ const Blog = (props) => {
                     username: data.username,
                     rating: rating
                 }
-                // newCommentList.push(newComment);
                 setComment("");
-                // setCommentList(newCommentList);
                 callComments();
                 if(rating === 1)
                     setLikes(likes + 1);
                 else
                     setDislikes(dislikes + 1);
             } else {
-                // alert(data?.err);
-                // console.log(data.err);
                 props.setMessage(data.err);
                 props.setAlert("flex");
             }
@@ -118,8 +110,6 @@ const Blog = (props) => {
         })
             const data = await res.json();
             if(data.success) {
-                console.log("comments successful");
-                console.log(data.comments);
                 setCommentList(data.comments);
             } else {
                 console.log("comments failed");
@@ -142,7 +132,6 @@ const Blog = (props) => {
                     <img src={UserIcon}></img>
                 </div>
             </div>
-            {/* <div className="default"> */}
                 <div className="comment">
                     <div className="comment-body">
                         <h5 className="comment-title">{location.state.props.subject}</h5>
@@ -154,31 +143,20 @@ const Blog = (props) => {
                 <div className='comment-bottom'>
                     <p className="comment-info">{likes} Likes</p>
                     <p className="comment-info">{dislikes} Disikes</p>
-                    {/* <p className="comment-info">{location.state.props.tags}</p> */}
                 </div>
 
                 <div className='comment-reply'>
-                    {/* <p>Reply here</p> */}
                     <textarea
-                        // onChange={onChange}
                         onChange={(e)=> {setComment(e.target.value)}}
                         ref={textareaRef}
                         style={{
                             minHeight: MIN_TEXTAREA_HEIGHT,
                             resize: "none",
                             width: "100%",
-                            // border: "1px solid #D4D4D4"
                         }}
                         placeholder="Reply to user..."
                         value={comment}
                     />
-                    {/* <div contenteditable>
-                        type here...
-                    </div> */}
-                    {/* <div className='comment-reply-body'>
-                        <textarea contentEditable className="post-text" placeholder="Reply to user..."></textarea>
-
-                    </div> */}
                     <div className='comment-reply-buttons'>
                         <div className='comment-ratings'>
                             <img src={rating === 1 ? SelectedThumbsUp : ThumbsUp} className="rating-icon" onClick={() => setRating(1)}></img>
@@ -187,17 +165,9 @@ const Blog = (props) => {
                         <button className='comment-button' onClick={postComment}>Comment</button>
                     </div>
                 </div>
-
-                {/* <h6 style={{marginTop: '10px', textAlign: "center"}}><b>Comments</b></h6> */}
                 <div>
                     {commentList.map((comments,i) => {
-                        console.log("rating for comment " + i + " is: " + comments.rating);
                         return (
-                            // <div className="card" style={{width: "50%", margin: '0 auto', marginBottom: '10px'}} key={i}>
-                            //     <h6 className="card-title">username: {comments.username}</h6>
-                            //     <p className="card-text">{comments.comment}</p>
-                            //     <p className="card-text">Rating: {comments.rating ===1?"Positive":"Negative" }</p>
-                            // </div>
                             <div className="comment">
                                 <div className="comment-body">
                                     <div className='comment-header'>
@@ -205,24 +175,10 @@ const Blog = (props) => {
                                         <img src={comments.rating === 1 ? SelectedThumbsUp : SelectedThumbsDown} className='comment-rating-icon'></img>
                                     </div>
                                     <p className="comment-text">{comments.comment}</p>
-                                    {/* <p className="comment-text">{comments.rating ===1?"Positive":"Negative"}</p> */}
                                 </div>
                             </div>
                     )})}
                 </div>
-                {/* <form onSubmit={postComment} style={{margin: '0', textAlign: "center"}}>
-                    <div style={{width: '52%', margin:'0 auto', display: 'flex',}} >
-                        <div>
-                            <select onChange={(e) => {setRating(e.target.value)}}>
-                                <option value="1">Positive</option>
-                                <option value="0">Negative</option>
-                            </select>
-                        </div>
-                        <input style={{padding: '10px 0'}} value={comment} onChange={(e)=> {setComment(e.target.value)}} type="text" placeholder="Comment" />
-                    </div>
-                    <button style={{textAlign: "center"}}>Post Comment</button>
-                </form> */}
-            {/* </div> */}
         </div>
         <div className="user-options" style={showLogout ? {visibility: "visible"} : {visibility: "hidden"}} onClick={() => logout()}>
             <div onClick={() => logout()}><p>Log out</p></div>

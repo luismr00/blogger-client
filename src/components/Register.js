@@ -9,8 +9,6 @@ function Register() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [errMsg, setErrMsg] = useState("hidden");
-  const [pwErr, setPwError] = useState("hidden");
   const [message, setMessage] = useState("");
   const [alert, setAlert] = useState("none")
   const [authenticated, setAuthenticated] = useState(false);
@@ -21,13 +19,9 @@ function Register() {
     e.preventDefault();
 
     if ((!username || !password || !firstName || !lastName || !email)) {
-      // setErrMsg("visible");
-      // setPwError("hidden");
       setMessage("Some fields are missing. Try again!");
       setAlert("flex");
     } else if (password !== password2) {
-      // setPwError("visible");
-      // setErrMsg("hidden");
       setMessage("The passwords do not match. Try again!");
       setAlert("flex"); 
     } else {
@@ -48,15 +42,11 @@ function Register() {
       })
       const data = await res.json();
       if(data.success) {
-        console.log("registered successful");
-        // setErrMsg("hidden");
         setAlert("none");
         history.push("/userpage");
       } else {
-        // setErrMsg("visible");
         setMessage("Registration failed. Check your connection.");
         setAlert("flex");
-        console.log("registered failed: ", data.err);
       }
     }
   }
@@ -132,9 +122,6 @@ function Register() {
               <p>{message}</p>
             </div>
           </div>
-
-        {/* <p style={{color: 'red', visibility: errMsg}}>Some fields are missing. Try again!</p> */}
-        {/* <p style={{color: 'red', visibility: pwErr}}>The passwords do not match. Try again!</p> */}
         </div>
       </div>
     );

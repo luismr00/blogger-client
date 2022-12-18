@@ -8,7 +8,6 @@ import UserSearchResult from "./UserSearchResult";
 
 function ProfileDisplay(props) {
 
-    // const [follower, setFollower] = useState(null);
     const location = useLocation();
     const { pathname } = location;
     const history = useHistory();
@@ -19,10 +18,7 @@ function ProfileDisplay(props) {
     const [followingUsers, setFollowingUsers] = useState(0);
     const [userFollowers, setUserFollowers] = useState(0);
     const [blogCount, setBlogCount] = useState(0);
-    const [selection, setSelection] = useState(props.view ? props.view : "followers"); //use props.view ? props.view : followers
-
-    // console.log('CHECKING VIEW');
-    // console.log(location.props.view);
+    const [selection, setSelection] = useState(props.view ? props.view : "followers");
 
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
@@ -45,7 +41,6 @@ function ProfileDisplay(props) {
     }
 
     const getFollowings = async (username) => {
-        // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/followings`, {
             method: "GET",
             credentials: 'include',
@@ -53,20 +48,13 @@ function ProfileDisplay(props) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-            // , body: JSON.stringify({
-            //     follower: username
-            // }),
         })
         const data = await res.json();
         if(data.success) {
-            console.log("Getting information over the console followings...");
-            console.log(data.followings);
             setFollowingUsers(data.followings);
 
             if(props.view === "followings")
                 setUsers(data.followings);
-            // setUserProfile(data.profileInfo[0]);
-            // setUserHobbies(data.hobbies);
         } else {
             alert(data?.err);
             console.log(data.err);
@@ -74,7 +62,6 @@ function ProfileDisplay(props) {
     }
 
     const getFollowers = async (username) => {
-        // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/${pathname.split("/")[1]}/followers`, {
             method: "GET",
             credentials: 'include',
@@ -82,20 +69,13 @@ function ProfileDisplay(props) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             }
-            // , body: JSON.stringify({
-            //     follower: username
-            // }),
         })
         const data = await res.json();
         if(data.success) {
-            console.log("Getting information over the console for followers...");
-            console.log(data.followers);
             setUserFollowers(data.followers);
 
             if(props.view === "followers" || selection === "followers")
                 setUsers(data.followers);
-            // setUserProfile(data.profileInfo[0]);
-            // setUserHobbies(data.hobbies);
         } else {
             alert(data?.err);
             console.log(data.err);
@@ -103,7 +83,6 @@ function ProfileDisplay(props) {
     }
 
     const getUser = async (e) => {
-        // e.preventDefault();
         const res = await fetch(`https://mysql-blogger.herokuapp.com/api/profile/${pathname.split("/")[1]}`, {
             method: "GET",
             credentials: 'include',
@@ -114,10 +93,6 @@ function ProfileDisplay(props) {
         })
         const data = await res.json();
         if(data.success) {
-            // console.log("Getting information from getUser...");
-            // console.log(data.profileInfo);
-            // console.log(data.hobbies);
-            // console.log(data.blogs_count[0].blogs_count);
             setUserProfile(data.profileInfo[0]);
             setUserHobbies(data.hobbies);
             setBlogCount(data.blogs_count[0].blogs_count);
@@ -141,8 +116,6 @@ function ProfileDisplay(props) {
             setSelection("followings");
             setUsers(followingUsers);
         }
-
-        console.log(users);
     }
 
     const selectionColors =  {
@@ -168,14 +141,11 @@ function ProfileDisplay(props) {
                         <div className="tab" style={selection === "followers" ? selectionColors : defaultColor} onClick={() => handleTabs("followers")}><p>Followers</p></div>
                         <div className="tab" style={selection === "followings" ? selectionColors : defaultColor} onClick={() => handleTabs("followings")}><p>Following</p></div>
                     </div>
-                    {/* <div>FOLLOW RESULTS HERE THROUGH MAPPING</div> */}
                     <br></br>
                     {users != null ? 
                         users.map((user, index) => {
-                        {console.log(user)}
                             return(
                                 <UserSearchResult user={user} username={user.username} userProfile={userProfile} index={index} />
-                                // <p>result</p>
                             );
                         }) : 
                         <div></div>
@@ -186,7 +156,6 @@ function ProfileDisplay(props) {
                 </div>
             </div>
         :
-        // <NotFound />
         <NotFound title={"User not found"} message={"Try searching instead"} button={"Search"} margin={"355px 0 0 0"} />
 
     );

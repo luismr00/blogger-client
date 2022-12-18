@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function NotFound(props) {
     return(
         <div className="column main-display">
-        {/* <div> */}
             <div className="main-content">
                 <div className="empty-content" style={{margin: props.margin}}>
                     <h3>{props.title}</h3>

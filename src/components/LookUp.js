@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Close from "../assets/close.svg";
-import { main_hobbies } from "../data/mainHobbies";
-
-const list = ['1','2','3'];
 
 function LookUp(props) {
 
@@ -17,9 +14,7 @@ function LookUp(props) {
             </div>
             <div className="search-selection-body" id="search-body">
                 <form className="hobby-search-input">
-                    {/* <input type="text" placeholder="Search users"></input> */}
                     <input 
-                        // className="hobby-search-input"
                         type="text" 
                         placeholder="Search" 
                         value={search} 
@@ -28,7 +23,6 @@ function LookUp(props) {
                 </form>
 
                 <div className="search-results">
-                {console.log(props.allUsers)}
                 {Object.keys(props.allUsers).filter((username, key) => {
                     if(search === "") {
                         showSearch = false;

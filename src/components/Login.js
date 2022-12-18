@@ -6,7 +6,6 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password,setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("hidden");
   const [message, setMessage] = useState("");
   const [alert, setAlert] = useState("none")
   const [authenticated, setAuthenticated] = useState(false);
@@ -15,9 +14,6 @@ function Login() {
 
   const signIn = async (e) => {
     e.preventDefault();
-
-    console.log("checking email and password entered");
-    console.log(email, password);
 
     const res = await fetch("https://mysql-blogger.herokuapp.com/api/login", {
       method: "POST",
@@ -40,19 +36,6 @@ function Login() {
 
       setMessage("Username or password is invalid. Try again!")
       setAlert("flex");
-
-      // if(response === true) {
-      //   console.log("no message rerender");
-      // } else {
-      //   response = true;
-      //   setMessage("flex");
-      //   setTimeout(() => {
-      //     setMessage("none");
-      //     response = false;
-      //   }, 4500);
-      // }
-
-      console.log("login failed: ", data.err);
     }
   }
 

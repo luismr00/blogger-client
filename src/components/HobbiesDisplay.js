@@ -2,25 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import HobbyOption from "./HobbyOption";
 import HobbyOptionSelected from "./HobbyOptionSelected";
-import { main_hobbies } from "../data/mainHobbies.js";
 import ManageHobbies from "./ManageHobbies";
 import UserIcon from "../assets/person-circle.svg"
-import NotFound from "./NotFound";
 import NotAvailable from "./NotAvailable";
 
 function HobbiesDisplay(props) { 
 
-    // const [colorBG, setColorBG] = useState("#D4D4D4");
-    // const [textColor, setTextColor] = useState("black");
     const [hover, setHover] = useState(false);
     const history = useHistory();
     const [showLogout, setShowLogout] = useState(false);
-    // const [selected, setSelected] = useState(false);
-    // const [savePopup, setSavePopup] = useState("hidden");
-    // const [hobbiesList, setHobbyList] = useState([]);
-    // const [userHobbiesAmount, setUserHobbiesAmount] = useState(0); //must use another variable to compare the initial size vs the new size of hobbies
-    // const [selectedHobbies, setSelectedHobbies] = useState(new Set());
-    // const [tempHobbies, setTempHobbies] = useState(new Set());
 
     const logout = async () => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/logout", {
@@ -43,12 +33,6 @@ function HobbiesDisplay(props) {
     }
 
     const selectHobby = (hobby) => {
-
-        console.log("Save popup value: " + props.savePopup);
-
-        console.log("Checking selectedHobbies and tempHobbies at the beginning");
-        console.log(props.selectedHobbies);
-        console.log(props.tempHobbies);
 
         let matches = true;
 
@@ -75,93 +59,7 @@ function HobbiesDisplay(props) {
             else
                 props.setSavePopup("visible");
         }
-
-        console.log("Checking same variables at the end now");
-        console.log(props.selectedHobbies);
-        console.log(props.tempHobbies);
-
-
-        //Stringify selectedHobbies and tempHobbies for comparison verification
-        // let temp1 = JSON.stringify(Array.from(tempHobbies));
-        // let temp2 = JSON.stringify(Array.from(selectedHobbies));
-
-        // tempHobbies.add("hi");
-
-        // if(temp1 === temp2)
-            //hide savePopup
-            // console.log(true);
-            // setSavePopup("hidden");
-        // else
-            //show savePopup
-            // console.log(false);
-            // setSavePopup("visible");
-
-
-        
-        // console.log(temp1);
-        // console.log(temp2);
-
-        //replace userHobbiesAmount to display popup
-
-        // let count = userHobbiesAmount;
-
-        // if(selectedHobbies.has(hobby)) {
-        //     count--;
-        //     selectedHobbies.delete(hobby);
-        //     setUserHobbiesAmount(count);
-        //  } else { 
-        //     count++;
-        //     selectedHobbies.add(hobby);
-        //     setUserHobbiesAmount(count);
-        //  }
-
-        // console.log(selectedHobbies);
-
-        // console.log(hobby);
-        // console.log(userHobbiesAmount);
     }
-
-    // const fetchHobbyList = async () => {
-    //     const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbies_list", {
-    //         method: "GET",
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //         },
-    //     })
-    //     const data = await res.json();
-    //     if(data.hobbies != null){
-    //         setHobbyList(data.hobbies);
-    //     }
-    // }
-
-    // const fetchHobbies = async () => {
-    //     const res = await fetch("https://mysql-blogger.herokuapp.com/api/getHobbies", {
-    //         method: "GET",
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json',
-    //         },
-    //     })
-    //     const data = await res.json();
-    //     if(data.hobbies != null){
-
-    //         console.log("Showing hobbies fetched");
-    //         console.log(data.hobbies);
-    //         setSelectedHobbies(new Set(data.hobbies));
-    //         console.log(selectedHobbies);
-    //         setTempHobbies(new Set(data.hobbies));
-    //     }
-    // }
-
-    //   useEffect(() => {
-    //     setSavePopup("hidden");
-    //     fetchHobbies();
-    //   }, [props.view]);
-    
-    //   useEffect(() => {
-    //     fetchHobbyList();
-    //   }, []);
 
     const addHobbies = async (addList, hobbies) => {
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/addHobbies", {
@@ -173,18 +71,11 @@ function HobbiesDisplay(props) {
             },
             body: JSON.stringify({
                 list: addList
-                // previousHobbies: Array.from(props.selectedHobbies), 
-                // hobbies: hobbies,
             }),
         }) 
         const data = await res.json();
         if(data.success) {
-            console.log("create successful");
-            // alert("Hobbies added successfully");
-            //reset selectedHobbies and tempHobbies if necessary
-            //pass a different copy of tempHobbies to avoid selectedHobbies and tempHobbies behaving like pointers after
             props.setSelectedHobbies(new Set(hobbies));
-            //hide savePopup ofc
             props.setSavePopup("hidden");
             props.setUserHobbies(hobbies);
         } else {
@@ -202,23 +93,16 @@ function HobbiesDisplay(props) {
             },
             body: JSON.stringify({
                 list: deleteList
-                // previousHobbies: Array.from(props.selectedHobbies), 
-                // hobbies: hobbies,
             }),
         }) 
         const data = await res.json();
         if(data.success) {
             console.log("create successful");
-            // alert("Hobbies deleted successfully");
-            //reset selectedHobbies and tempHobbies if necessary
-            //pass a different copy of tempHobbies to avoid selectedHobbies and tempHobbies behaving like pointers after
             props.setSelectedHobbies(new Set(hobbies));
-            //hide savePopup ofc
             props.setSavePopup("hidden");
             props.setUserHobbies(hobbies);
 
             if(props.view === 'manage') {
-                // props.fetchHobbies();
                 props.setView("");
                 props.setView("manage");
             }
@@ -251,10 +135,6 @@ function HobbiesDisplay(props) {
             deleteList.push(temp);
         });
 
-        console.log("Sending the following data to the server");
-        console.log(addList);
-        console.log(deleteList);
-
         if (deleteList.length != 0) {
             deleteHobbies(deleteList, hobbies);
         } 
@@ -262,32 +142,6 @@ function HobbiesDisplay(props) {
         if (addList.length != 0) {
             addHobbies(addList, hobbies);
         }
-
-        // const res = await fetch("https://mysql-blogger.herokuapp.com/api/hobbies", {
-        //     method: "POST",
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //         'credentials': 'include'
-        //     },
-        //     body: JSON.stringify({
-        //         previousHobbies: Array.from(props.selectedHobbies), 
-        //         hobbies: hobbies,
-        //     }),
-        // }) 
-        // const data = await res.json();
-        // if(data.success) {
-        //     console.log("create successful");
-        //     alert("Hobbies added successfully");
-        //     //reset selectedHobbies and tempHobbies if necessary
-        //     //pass a different copy of tempHobbies to avoid selectedHobbies and tempHobbies behaving like pointers after
-        //     props.setSelectedHobbies(new Set(hobbies));
-        //     //hide savePopup ofc
-        //     props.setSavePopup("hidden");
-        //     props.setUserHobbies(hobbies);
-        // } else {
-        //     console.log("create failed");
-        // }
     }
 
     const resetHobbies = async (e) => {
@@ -303,8 +157,6 @@ function HobbiesDisplay(props) {
         }
     }
 
-    // const removeSelectedHobby = ()
-
     const hobbySelected = {
         backgroundColor: "red",
         color: "white"
@@ -313,12 +165,7 @@ function HobbiesDisplay(props) {
     const sectionStyle = {
         backgroundColor: hover ? "red" : "#D4D4D4", 
         color: hover ? "white" : "black"
-        // backgroundColor: "red"
     }
-
-    // const showSavePopup = {
-    //     visibility: userHobbiesAmount === 0 ? "hidden" : "visible"
-    // }
 
     return (
         <div className="column main-display" id="column-grow">
@@ -361,8 +208,6 @@ function HobbiesDisplay(props) {
                         </div>
                     : props.view === "manage" ?
                     props.selectedHobbies.size === 0 ? 
-                        // <div className="hobby-lists">You have no hobbies saved</div>
-                        // <NotFound />
                         <NotAvailable title={"No Hobbies Saved"} message={"Check one of the options in the button above to add hobbies"} button={"none"} margin={"270px 100px 0"} />
                         :
                         <div>
@@ -371,7 +216,6 @@ function HobbiesDisplay(props) {
                                 <p>Remove hobbies as you please and hit save</p>
                             </div>
                             <div className="hobby-lists">
-                                {/* {console.log(Array.from(props.selectedHobbies))} */}
                                 {Array.from(props.selectedHobbies).map((hobby, id) => (
                                     <ManageHobbies key={id} id={id} hobby={hobby} selectHobby={selectHobby}/>
                                 ))}
@@ -381,9 +225,6 @@ function HobbiesDisplay(props) {
                     <div></div>
                 }
             </div>
-            {/* <br></br>
-            <br></br>
-            <br></br> */}
             <div className="extra-space"></div>
             <div className="save-hobbies" style={{visibility: props.savePopup}}>
                 <p>You have unsaved changes</p>

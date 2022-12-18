@@ -8,6 +8,7 @@ const CreateBlog = () => {
     const [description, setDescription] = useState("");
     const [subject, setSubject] = useState("");
     const [tags, setTags] = useState("");
+    
     const post = async (e) => {
         e.preventDefault();
         const res = await fetch("https://mysql-blogger.herokuapp.com/api/create", {
@@ -25,8 +26,6 @@ const CreateBlog = () => {
             }) 
             const data = await res.json();
             if(data.success) {
-                console.log("create successful");
-                // history.push("/blogs");
                 alert("Blog created successfully");
                 setDescription("");
                 setSubject("");

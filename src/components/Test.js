@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateFriends } from '../reducers/reducer';
 
@@ -10,7 +10,6 @@ function Test() {
     const addNewList = () => {
         let newFriends = [...friends];
         newFriends.push("friend");
-        console.log(newFriends);
         dispatch(updateFriends(newFriends));
     }
 
@@ -26,7 +25,6 @@ function Test() {
                     );
                 })
             }
-            {/* <p>No friends found</p> */}
             <div>
                 <button onClick={() => addNewList()}>New</button>
             </div>

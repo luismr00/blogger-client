@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function HobbyOptionSelected(props) { 
 
     const [hover, setHover] = useState(false);
     const [selected, setSelected] = useState(props.check);
-
-    // if(props.reset && props.check) {
-    //     console.log("Should reset hobby #" + props.id);
-    //     setSelected(true);
-    // }
 
     //function to use selected state and selectHobby prop function one after the other
     const handleSelection = (hobby) => {

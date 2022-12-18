@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import UserIcon from "../assets/person-circle.svg";
 import Home from "../assets/home.svg";
@@ -51,7 +51,6 @@ function Sidebar(props) {
                             <h2>Search</h2>
                         </div>
                     </a>
-                    {/* <span class="material-symbols-outlined">interests</span> */}
                     <a href="/hobbies">
                         <div className="navigations">
                             <img className="icon" src={Interests}></img>
@@ -77,10 +76,6 @@ function Sidebar(props) {
                     <p className="user-button-name">{props.user.firstName} {props.user.lastName}</p>
                 </div>
             </div>
-
-            {/* image next to user's name */}
-            {/* <span class="material-symbols-outlined">account_circle</span> */}
-            {/* <i class="bi bi-person-circle"></i> */}
         </div>
     );
 

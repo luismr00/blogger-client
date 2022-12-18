@@ -4,14 +4,12 @@ import Close from "../assets/close.svg";
 function AddHobby(props) {
 
     const [hobby, setHobby] = useState("");
-    // const [showSearch, setShowSearch] = useState(false);
     let showSearch = false; 
     let list = null;
     let temp = null;
 
     // combination between main hobbies list and user hobbies list from the DB for searching purposes
     // avoiding repeats as well
-    // let list = props.hobbiesList.concat(props.otherHobbies);
     temp = new Set(props.hobbiesList);
 
     props.otherHobbies.map((other) => {
@@ -40,10 +38,8 @@ function AddHobby(props) {
         let newSet = new Set(temp);
 
         if(newSet.has(hobbyCopy)) 
-            // console.log(true);
             return true
         else
-            // console.log(false);
             return false;        
     } 
 
@@ -55,13 +51,10 @@ function AddHobby(props) {
         let newHobbies = props.userHobbies;
         newHobbies.push(hobby);
 
-        console.log(newHobbies);
-
         if(hobbyExists === null) {
             props.setMessage("Field is required");
             props.setAlert("flex");
         } else if(hobbyExists === true) {
-            // console.log("Cannot add existing saved hobby");
             props.setMessage("Cannot add existing saved hobby");
             props.setAlert("flex");
         } else {
@@ -74,23 +67,17 @@ function AddHobby(props) {
                 },
                 body: JSON.stringify({
                     hobby: hobby, 
-                    // list: [[hobby, props.user.username]]
                 }),
             }) 
             const data = await res.json();
             if(data.success) {
-                // console.log("create successful");
-                // alert("Hobby added successfully");
                 setHobby("");
                 props.closeSelection();
-                // props.fetchHobbies();
                 props.setUserHobbies(newHobbies);
                 props.setSelectedHobbies(new Set(newHobbies));
                 props.setTempHobbies(new Set(newHobbies));
 
-                //SELECT THE HOBBY WITH DOCUMENT.ELEMENT....
                 if(props.view === 'main') {
-                    // props.fetchHobbies();
                     props.setView("");
                     props.setView("main");
                 }
@@ -102,7 +89,6 @@ function AddHobby(props) {
                 }, 3000);
 
             } else {
-                // console.log("create failed");
                 props.setMessage("Create failed");
                 props.setAlert("flex");
                 setTimeout(() => {
@@ -139,7 +125,6 @@ function AddHobby(props) {
                 <p className="hobby-search-header">Can't find your hobby? Don't worry. We'll check hobbies from other users as well and still try to match your search with a similar hobby.</p>
                 <form className="hobby-search-input">
                     <input 
-                        // className="hobby-search-input"
                         type="text" 
                         placeholder="Search" 
                         value={hobby} 

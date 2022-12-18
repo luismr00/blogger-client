@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import { useHistory } from "react-router-dom";
-
 
 const MutualFollowers = () => {
-    //const [authenticated, setAuthenticated] = useState(false);
-    const history = useHistory();
+
     const [users, setUsers] = useState([]);
     const [user1, setuser1] = useState(null);
     const [user2, setuser2] = useState(null);
@@ -22,23 +19,15 @@ const MutualFollowers = () => {
             })
             const data = await res.json();
             if(data.users != null){
-                console.log(data.users);
                 setUsers(data.users);
             }
         }
         fetchusers();
 
     }, []);
-    
-    useEffect(() => {
-        //console.log('Selected username changed to: ' + username);
-        console.log("fetched mutual followers");
-        console.log(followers);
-    }, [followers]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("fetching mutual followers");
         getMutualFollowers();
     }
 
@@ -58,12 +47,10 @@ const MutualFollowers = () => {
             })
             const data = await res.json();
             if(data.followers != null){
-                console.log(data.followers);
                 setFollowers(data.followers);
             }
         } else {
             alert("Please select two users");
-            console.log("must select two users");
         }
     }
 

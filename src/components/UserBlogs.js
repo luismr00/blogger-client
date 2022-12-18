@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 
 
 const UserBlogs = () => {
-    //const [authenticated, setAuthenticated] = useState(false);
     const history = useHistory();
     const [users, setUsers] = useState([]);
     const [username, setUsername] = useState(null);
@@ -21,23 +20,16 @@ const UserBlogs = () => {
             })
             const data = await res.json();
             if(data.users != null){
-                console.log(data.users);
                 setUsers(data.users);
             }
         }
         fetchusers();
 
     }, []);
-    
-    useEffect(() => {
-        console.log("Retrieved positive blogs from selected user")
-    }, [userBlogs]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("submitting positive blogs");
         getUserBlogs();
-        
     }
 
     const getUserBlogs = async () => {
@@ -54,7 +46,6 @@ const UserBlogs = () => {
         })
         const data = await res.json();
         if(data.blogs != null){
-            console.log(data.blogs);
             setUserBlogs(data.blogs);
         }
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import UserIcon from "../assets/person-circle.svg";
@@ -12,6 +12,7 @@ function UserSearchResult(props) {
     const page = pathname.split("/")[2];
 
     const history = useHistory();
+
     let userProfile = {
         username: props.username
     }
@@ -26,7 +27,6 @@ function UserSearchResult(props) {
                     <img src={UserIcon}></img>
                     <div className="user-search-text">
                         <h5>{props.user.first_name} {props.user.last_name}</h5>
-                        {/* {console.log("hobbies: " + props.user.hobbies)} */}
                         {props.user.hobbies ? 
                             props.user.hobbies.map((hobby, index) => {
                                 if(index === props.user.hobbies.length - 1)
@@ -40,11 +40,6 @@ function UserSearchResult(props) {
                         }
                     </div>
                 </div>
-                {/* <div className="follow-button" onClick={() => followUser(userProfile.username)}>follow</div> */}
-                {/* <button className="follow-button">follow</button> */}
-                {/* {console.log("userProfile and user information before sending to follow button")}
-                {console.log(props.userProfile)}
-                {console.log(props.sessionUser)} */}
                 {page != "follow-page" ?
                     <FollowButton user={props.sessionUser} userProfile={userProfile} />
                     :

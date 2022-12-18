@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function TagOption(props) {
-//   const [tags, setTags] = useState('');
   const [selected, setSelected] = useState(false);
 
     const handleSelection = (hobby) => {
-        // console.log("save selection and change color");
         if(selected)
             setSelected(false);
         else
@@ -27,7 +25,6 @@ function TagOption(props) {
         onClick={() => handleSelection(props.hobby)}
         style={hobbyColors}
         >
-            {/* {console.log("inserting option...")} */}
             <p>{props.hobby}</p>
         </div>
     );
