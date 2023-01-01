@@ -2046,3 +2046,16 @@ textarea {
   cursor: pointer;
   font-weight: 700;
 }
+
+.user-search-text {
+  flex-grow: 1;
+}
+
+.user-search-info {
+  flex-grow: 1;
+}
+
+.user-search-text-header {
+  display: flex;
+  justify-content: space-between;
+}

@@ -26,7 +26,15 @@ function UserSearchResult(props) {
                 <div className="user-search-info">
                     <img src={UserIcon}></img>
                     <div className="user-search-text">
-                        <h5>{props.user.first_name} {props.user.last_name}</h5>
+                        {/* <h5>{props.user.first_name} {props.user.last_name}</h5> */}
+                        <div className="user-search-text-header">
+                            <h5>{props.user.first_name} {props.user.last_name}</h5>
+                            {page != "follow-page" ?
+                                <FollowButton user={props.sessionUser} userProfile={userProfile} />
+                                :
+                                <div></div>
+                            }
+                        </div>
                         {props.user.hobbies ? 
                             props.user.hobbies.map((hobby, index) => {
                                 if(index === props.user.hobbies.length - 1)
@@ -40,11 +48,11 @@ function UserSearchResult(props) {
                         }
                     </div>
                 </div>
-                {page != "follow-page" ?
+                {/* {page != "follow-page" ?
                     <FollowButton user={props.sessionUser} userProfile={userProfile} />
                     :
                     <div></div>
-                }
+                } */}
             </div>
         </div>
     );
